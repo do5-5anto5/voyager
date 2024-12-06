@@ -51,8 +51,10 @@ dependencies {
     implementation(libs.androidx.material3)
 
     //Lottie
-    //Lottie
     implementation(libs.lottie.compose)
+
+    //Koin
+    implementation(libs.koin.android)
 
     //Test
     testImplementation(libs.junit)
