@@ -56,14 +56,6 @@ dependencies {
     //Koin
     implementation(libs.koin.android)
 
-    // Retrofit
-    implementation(libs.retrofit)
-    // OkHttp
-    implementation(platform(libs.okhttp.bom))
-    implementation(libs.okhttp)
-    //Kotlin serialization
-    implementation(libs.kotlinx.serialization.json)
-
     //Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
