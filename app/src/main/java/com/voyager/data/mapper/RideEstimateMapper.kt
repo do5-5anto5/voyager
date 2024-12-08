@@ -4,10 +4,10 @@ import com.voyager.data.model.ride_response.address.AddressResponse
 import com.voyager.data.model.ride_response.estimate.OptionResponse
 import com.voyager.data.model.ride_response.estimate.ReviewResponse
 import com.voyager.data.model.ride_response.estimate.RideEstimateResponse
-import com.voyager.domain.ride.address.Address
-import com.voyager.domain.ride.estimate.Option
-import com.voyager.domain.ride.estimate.Review
-import com.voyager.domain.ride.estimate.RideEstimate
+import com.voyager.domain.model.ride.address.Address
+import com.voyager.domain.model.ride.estimate.Option
+import com.voyager.domain.model.ride.estimate.Review
+import com.voyager.domain.model.ride.estimate.RideEstimate
 
 fun RideEstimateResponse.toDomain(): RideEstimate {
     return RideEstimate(

@@ -1,8 +1,8 @@
 // YApi QuickType插件生成，具体参考文档:https://plugins.jetbrains.com/plugin/18847-yapi-quicktype/documentation
 
-package com.voyager.domain.ride.estimate
+package com.voyager.domain.model.ride.estimate
 
-import com.voyager.domain.ride.address.Address
+import com.voyager.domain.model.ride.address.Address
 
 data class RideEstimate(
     val origin: Address,

@@ -1,4 +1,4 @@
-package com.voyager.domain.ride.estimate
+package com.voyager.domain.model.ride.estimate
 
 data class Review (
     val rating: Int,
