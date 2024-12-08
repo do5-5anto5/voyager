@@ -1,6 +1,6 @@
 package com.voyager.data.api_service
 
-import com.voyager.data.model.ride_estimate_response.RideEstimateResponse
+import com.voyager.data.model.ride_response.estimate.RideEstimateResponse
 import retrofit2.http.POST
 import retrofit2.http.Query
 
