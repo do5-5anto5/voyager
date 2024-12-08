@@ -8,7 +8,9 @@ import org.koin.dsl.module
 
 val presenterModule = module {
     viewModel {
-        RideRequestViewModel()
+        RideRequestViewModel(
+            useCase = get()
+        )
     }
 
     viewModel {
