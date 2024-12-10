@@ -1,29 +1,29 @@
 package com.voyager.domain.model.ride
 
 data class RideEstimate (
-    val duration: String,
-    val distance: String,
-    val origin: Address,
-    val routeResponse: String,
-    val destination: Address,
-    val options: List<Option>
+    val origin: Address?,
+    val destination: Address?,
+    val distance: Number?,
+    val duration: String?,
+    val options: List<Option>?,
+    val routeResponse: String?
 )
 
 data class Address (
-    val latitude: String,
-    val longitude: String
+    val latitude: Number?,
+    val longitude: Number?
 )
 
 data class Option (
-    val review: Review,
-    val name: String,
-    val description: String,
-    val id: String,
-    val value: String,
-    val vehicle: String
+    val id: Number?,
+    val name: String?,
+    val description: String?,
+    val vehicle: String?,
+    val review: Review?,
+    val value: Number?
 )
 
 data class Review (
-    val rating: String,
-    val comment: String
+    val rating: Number?,
+    val comment: String?
 )

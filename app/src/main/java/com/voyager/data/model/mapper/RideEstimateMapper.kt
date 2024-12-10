@@ -11,11 +11,11 @@ import com.voyager.domain.model.ride.RideEstimate
 
 fun RideEstimateResponse.toDomain(): RideEstimate {
     return RideEstimate(
-        origin = origin.toDomain(),
-        destination = destination.toDomain(),
+        origin = origin?.toDomain(),
+        destination = destination?.toDomain(),
         distance = distance,
         duration = duration,
-        options = options.map { it.toDomain() },
+        options = options?.map { it.toDomain() },
         routeResponse = routeResponse
     )
 }
@@ -29,12 +29,12 @@ fun AddressResponse.toDomain(): Address {
 
 fun OptionResponse.toDomain(): Option {
     return Option(
-        review= review.toDomain(),
+        review = review?.toDomain(),
         name= name,
         description= description,
-        id= id,
-        value= value,
-        vehicle= vehicle
+        id = id,
+        vehicle= vehicle,
+        value= value
     )
 }
 
