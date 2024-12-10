@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Voyager</string>
+
+<!--RideRequestScreen-->
+    <!--AddressesDropDownMenu-->
+    <string name="choose_origin_address">Escolha o endereço de origem</string>
+    <string name="choose_destination_address">Escolha o endereço de destino</string>
+    <string name="pres_kenedy_address">Av. Pres. Kenedy, 2385 - Remédios, Osasco - SP, 02675-031</string>
+    <string name="paulista_address">Av. Paulista, 1538 - Bela Vista, São Paulo - SP, 01310-200</string>
+    <string name="thomas_edison_address">Av. Thomas Edison, 365 - Barra Funda, São Paulo - SP, 01140-000</string>
+    <string name="av_brasil_address">Av. Brasil, 2033 - Jardim America, São Paulo - SP, 01431-001</string>
+
 </resources>
