@@ -3,45 +3,52 @@ package com.voyager.data.remote.model.ride_estimate_response
 import com.google.gson.annotations.SerializedName
 
 data class RideEstimateResponse (
-    @SerializedName("duration")
-    val duration: String,
-    @SerializedName("distance")
-    val distance: String,
     @SerializedName("origin")
-    val origin: AddressResponse,
-    @SerializedName("route_response")
-    val routeResponse: String,
+    val origin: AddressResponse?,
     @SerializedName("destination")
-    val destination: AddressResponse,
+    val destination: AddressResponse?,
+    @SerializedName("distance")
+    val distance: Number?,
+    @SerializedName("duration")
+    val duration: String?,
     @SerializedName("options")
-    val options: List<OptionResponse>
+    val options: List<OptionResponse>?,
+    @SerializedName("route_response")
+    val routeResponse: String?
 )
 
 data class AddressResponse (
     @SerializedName("latitude")
-    val latitude: String,
+    val latitude: Number?,
     @SerializedName("longitude")
-    val longitude: String
+    val longitude: Number?
 )
 
 data class OptionResponse (
-    @SerializedName("review")
-    val review: ReviewResponse,
-    @SerializedName("name")
-    val name: String,
-    @SerializedName("description")
-    val description: String,
     @SerializedName("id")
-    val id: String,
-    @SerializedName("value")
-    val value: String,
+    val id: Number?,
+    @SerializedName("name")
+    val name: String?,
+    @SerializedName("description")
+    val description: String?,
     @SerializedName("vehicle")
-    val vehicle: String
+    val vehicle: String?,
+    @SerializedName("review")
+    val review: ReviewResponse?,
+    @SerializedName("value")
+    val value: Number?,
 )
 
 data class ReviewResponse (
     @SerializedName("rating")
-    val rating: String,
+    val rating: Number?,
     @SerializedName("comment")
-    val comment: String
+    val comment: String?
+)
+
+data class RideEstimateErrorResponse (
+    @SerializedName("error_code")
+    val errorCode: Number?,
+    @SerializedName("error_description")
+    val errorDescription: String?
 )
