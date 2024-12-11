@@ -1,10 +1,9 @@
 package com.voyager.domain.model.ride.error
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
 
-@Parcelize
+@Serializable
 data class RideEstimateError(
-    val errorCode: Number?,
+    val errorCode: String?,
     val errorDescription: String?
-) : Parcelable
+)

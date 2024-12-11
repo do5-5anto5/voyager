@@ -1,7 +1,7 @@
 package com.voyager.domain.usecase
 
-import com.voyager.data.model.mapper.toDomain
-import com.voyager.data.remote.model.request_body.RideConfirmRequestBody
+import com.voyager.data.mapper.toDomain
+import com.voyager.data.remote.model.ride.request.confirm.RideConfirmRequestBody
 import com.voyager.domain.repository.RideRepository
 
 class RideConfirmUseCase(
