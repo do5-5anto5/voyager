@@ -1,9 +1,12 @@
 package com.voyager.data.remote.model.request_body
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class DriverRequestBody(
-    @SerializedName("id")
-    val id: Number? = null,
+    @SerialName("id")
+    val id: Int? = null,
+    @SerialName("name")
     val name: String? = ""
 )

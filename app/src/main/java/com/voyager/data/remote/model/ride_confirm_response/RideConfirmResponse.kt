@@ -1,8 +1,10 @@
 package com.voyager.data.remote.model.ride_confirm_response
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class RideConfirmResponse(
-    @SerializedName("success")
+    @SerialName("success")
     val success: Boolean
 )

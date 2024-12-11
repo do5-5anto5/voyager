@@ -1,13 +1,15 @@
 package com.voyager.data.remote.model.request_body
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class RideEstimateRequestBody(
 
-    @SerializedName("customer_id")
+    @SerialName("customer_id")
     val customerId: String? = "",
-    @SerializedName("origin")
+    @SerialName("origin")
     val origin: String? = "",
-    @SerializedName("destination")
+    @SerialName("destination")
     val destination: String? = ""
 )

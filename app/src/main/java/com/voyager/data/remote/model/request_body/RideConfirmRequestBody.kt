@@ -1,20 +1,22 @@
 package com.voyager.data.remote.model.request_body
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class RideConfirmRequestBody(
-    @SerializedName("customer_id")
+    @SerialName("customer_id")
     val customerId: String,
-    @SerializedName("destination")
+    @SerialName("destination")
     val destination: String,
-    @SerializedName("distance")
+    @SerialName("distance")
     val distance: String,
-    @SerializedName("driver")
+    @SerialName("driver")
     val driver: DriverRequestBody,
-    @SerializedName("duration")
+    @SerialName("duration")
     val duration: String,
-    @SerializedName("origin")
+    @SerialName("origin")
     val origin: String,
-    @SerializedName("value")
+    @SerialName("value")
     val value: String
 )
