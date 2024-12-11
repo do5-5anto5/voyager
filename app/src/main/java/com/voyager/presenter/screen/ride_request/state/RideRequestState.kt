@@ -7,7 +7,7 @@ import com.voyager.domain.model.ride.error.RideEstimateError
 
 
 data class RideRequestState(
-    val isLoading: Boolean = true,
+    val isLoading: Boolean = false,
     val requestBody: RideEstimateRequestBody = RideEstimateRequestBody(),
     val errorResponseBody: String = "",
     val error : RideEstimateError? = null,
