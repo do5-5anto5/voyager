@@ -9,5 +9,10 @@
     <string name="paulista_address">Av. Paulista, 1538 - Bela Vista, São Paulo - SP, 01310-200</string>
     <string name="thomas_edison_address">Av. Thomas Edison, 365 - Barra Funda, São Paulo - SP, 01140-000</string>
     <string name="av_brasil_address">Av. Brasil, 2033 - Jardim America, São Paulo - SP, 01431-001</string>
+    <string name="any_origin_address">Qualquer Origem</string>
+    <string name="any_destination_address">Qualquer Destino</string>
+
+<!--Errors-->
+    <string name="generic_error">Erro desconhecido, tente mais tarde.</string>
 
 </resources>
