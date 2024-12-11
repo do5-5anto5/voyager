@@ -1,29 +1,36 @@
 package com.voyager.domain.model.ride
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class RideEstimate (
-    val origin: Address?,
-    val destination: Address?,
-    val distance: Number?,
-    val duration: String?,
-    val options: List<Option>?,
-    val routeResponse: String?
-)
+    val origin: Address? = null,
+    val destination: Address? = null,
+    val distance: Number? = null,
+    val duration: String? = null,
+    val options: List<Option>? = emptyList<Option>(),
+    val routeResponse: String? = null,
+) : Parcelable
 
+@Parcelize
 data class Address (
-    val latitude: Number?,
-    val longitude: Number?
-)
+    val latitude: Number? = null,
+    val longitude: Number? = null
+) : Parcelable
 
+@Parcelize
 data class Option (
-    val id: Number?,
-    val name: String?,
-    val description: String?,
-    val vehicle: String?,
-    val review: Review?,
-    val value: Number?
-)
+    val id: Number? = null,
+    val name: String? = null,
+    val description: String? = null,
+    val vehicle: String? = null,
+    val review: Review? = null,
+    val value: Number? = null
+) : Parcelable
 
+@Parcelize
 data class Review (
-    val rating: Number?,
-    val comment: String?
-)
+    val rating: Number? = null,
+    val comment: String? = null
+) : Parcelable
