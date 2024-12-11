@@ -54,7 +54,7 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun RequestRideScreen() {
+fun RideRequestScreen() {
 
     val viewModel = koinViewModel<RideRequestViewModel>()
     val state by viewModel.state.collectAsState()
@@ -64,7 +64,7 @@ fun RequestRideScreen() {
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
 
-    RequestRideScreenContent(
+    RideRequestScreenContent(
         state = state,
         action = action,
         context = context,
@@ -74,7 +74,7 @@ fun RequestRideScreen() {
 }
 
 @Composable
-private fun RequestRideScreenContent(
+private fun RideRequestScreenContent(
     state: RideRequestState,
     action: (RideRequestAction) -> Unit,
     context: Context,
@@ -278,8 +278,8 @@ private fun RequestRideScreenContent(
 
 @PreviewLightDark
 @Composable
-private fun RequestRideScreenPreview() {
-    RequestRideScreenContent(
+private fun RideRequestScreenPreview() {
+    RideRequestScreenContent(
         state = RideRequestState(),
         action = {},
         context = LocalContext.current,

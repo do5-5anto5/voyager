@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.voyager.presenter.screen.ride_request.screen.RequestRideScreen
+import com.voyager.presenter.screen.ride_request.screen.RideRequestScreen
 import com.voyager.ui.theme.VoyagerTheme
 
 class MainActivity : ComponentActivity() {
@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             VoyagerTheme {
-                RequestRideScreen()
+                RideRequestScreen()
             }
         }
     }
