@@ -110,7 +110,7 @@ class RideRequestViewModel(
 
                 if (
                     _state.value.rideEstimate?.options?.isEmpty() == true
-                    && !_state.value.isLoading
+                    && _state.value.isLoading == false
                 ) {
                     _state.update { currentState ->
                         currentState.copy(
@@ -148,7 +148,7 @@ class RideRequestViewModel(
                     }
                     stopLoading()
 
-                    if (!_state.value.isLoading && _state.value.error != null) {
+                    if (_state.value.isLoading == false && _state.value.error != null) {
                         _state.update { currentState ->
                             currentState.copy(
                                 hasFeedBack = true,
