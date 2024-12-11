@@ -63,8 +63,14 @@ dependencies {
     implementation(platform(libs.okhttp.bom))
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
-    //Gson
+    // Gson
     implementation(libs.converter.gson)
+
+    // Kotlin Serialization
+    implementation(libs.serialization.json)
+
+    // Navigation
+    implementation(libs.navigation.compose)
 
     //Test
     testImplementation(libs.junit)
