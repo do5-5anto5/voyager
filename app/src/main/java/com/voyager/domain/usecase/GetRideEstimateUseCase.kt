@@ -1,7 +1,7 @@
 package com.voyager.domain.usecase
 
-import com.voyager.data.model.mapper.toDomain
-import com.voyager.data.remote.model.request_body.RideEstimateRequestBody
+import com.voyager.data.mapper.toDomain
+import com.voyager.data.remote.model.ride.request.estimate.RideEstimateRequestBody
 import com.voyager.domain.repository.RideRepository
 
 class GetRideEstimateUseCase(
