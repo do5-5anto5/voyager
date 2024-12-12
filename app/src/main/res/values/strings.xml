@@ -12,6 +12,10 @@
     <string name="any_origin_address">Qualquer Origem</string>
     <string name="any_destination_address">Qualquer Destino</string>
 
+<!--RideConfirmScreen-->
+    <string name="marker_description">Endereço de destino</string>
+    <string name="title_choose_option">Clique na sua opção</string>
+
 <!--Errors-->
     <string name="generic_error">Erro desconhecido, tente mais tarde.</string>
 
