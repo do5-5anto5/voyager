@@ -66,14 +66,11 @@ dependencies {
 
     implementation(libs.retrofit2.kotlinx.serialization.converter)
 
-    // Gson
-//    implementation(libs.converter.gson)
-
 //     Kotlin Serialization
     implementation(libs.serialization.json)
 
     // Navigation
-//    implementation(libs.navigation.compose)
+    implementation(libs.navigation.compose)
 
     //Test
     testImplementation(libs.junit)
