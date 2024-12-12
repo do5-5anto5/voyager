@@ -6,12 +6,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -44,13 +44,13 @@ fun DefaultButton(
             .shadow(
                 shape = RoundedCornerShape(100.dp),
                 elevation = 4.dp,
-                spotColor = MaterialTheme.colorScheme.primary,
-                ambientColor = MaterialTheme.colorScheme.primary
+                spotColor = Color.Green,
+                ambientColor = Color.LightGray
             ),
         enabled = enabled && !isLoading,
         colors = ButtonDefaults.buttonColors(
-            containerColor = MaterialTheme.colorScheme.primary,
-            disabledContainerColor = MaterialTheme.colorScheme.secondary
+            containerColor = Color.Green,
+            disabledContainerColor = Color.LightGray
         ),
         content = {
             if (isLoading) {
@@ -66,6 +66,7 @@ fun DefaultButton(
                 Text(
                     text = text,
                     style = TextStyle(
+                        color = Color.Blue,
                         fontSize = 18.sp,
                         lineHeight = 22.4.sp,
                         fontWeight = FontWeight.Bold,
