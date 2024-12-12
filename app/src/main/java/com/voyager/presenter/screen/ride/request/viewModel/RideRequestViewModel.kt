@@ -1,20 +1,20 @@
-package com.voyager.presenter.screen.ride_request.viewModel
+package com.voyager.presenter.screen.ride.request.viewModel
 
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.gson.Gson
 import com.voyager.core.enums.FeedBackType
-import com.voyager.data.remote.model.request_body.RideEstimateRequestBody
-import com.voyager.data.remote.model.ride_estimate_response.RideEstimateErrorResponse
+import com.voyager.data.remote.model.ride.request.estimate.RideEstimateRequestBody
+import com.voyager.data.remote.model.ride.response.estimate.RideEstimateErrorResponse
 import com.voyager.domain.model.ride.error.RideEstimateError
 import com.voyager.domain.usecase.GetRideEstimateUseCase
-import com.voyager.presenter.screen.ride_request.action.RideRequestAction
-import com.voyager.presenter.screen.ride_request.state.RideRequestState
+import com.voyager.presenter.screen.ride.request.action.RideRequestAction
+import com.voyager.presenter.screen.ride.request.state.RideRequestState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
 import retrofit2.HttpException
 
 class RideRequestViewModel(
@@ -42,8 +42,38 @@ class RideRequestViewModel(
                 onValueChange(action.value)
             }
 
-            RideRequestAction.ResetErrorState -> {
+            is RideRequestAction.ResetErrorState -> {
                 resetErrorState()
+            }
+
+            is RideRequestAction.OnRequestRideButtonClick -> {
+                onRequestRideButtonClick()
+            }
+
+            is RideRequestAction.OnOptionsPopulate -> {
+                onOptionsPopulate()
+            }
+        }
+    }
+
+    private fun onOptionsPopulate() {
+        startLoading()
+        _state.value.rideEstimate?.options?.forEach { option ->
+            _state.update { currentState ->
+                currentState.copy(
+                    options = currentState.options?.plus(option)
+                )
+            }
+        }
+        stopLoading()
+    }
+
+    private fun onRequestRideButtonClick() {
+        _state.value.rideEstimate?.options?.let {
+            _state.update { currentState ->
+                currentState.copy(
+                    options = emptyList()
+                )
             }
         }
     }
@@ -66,12 +96,10 @@ class RideRequestViewModel(
     }
 
     private fun changeOrigin(address: String) {
-        viewModelScope.launch {
-            _state.update { currentState ->
-                currentState.copy(
-                    origin = address
-                )
-            }
+        _state.update { currentState ->
+            currentState.copy(
+                origin = address
+            )
         }
     }
 
@@ -123,40 +151,42 @@ class RideRequestViewModel(
                     }
                 }
             } catch (e: HttpException) {
-                if (e.code() == 400) {
-                    startLoading()
-                    val errorBody = e.response()?.errorBody()?.string()
-                    _state.update { currentState ->
-                        currentState.copy(
-                            errorResponseBody = errorBody ?: ""
-                        )
-                    }
-
-                    val apiRideEstimateError = Gson().fromJson(
-                        errorBody,
-                        RideEstimateErrorResponse::class.java
-                    )
-
-                    _state.update { currentState ->
-                        currentState.copy(
-                            error = apiRideEstimateError?.let {
-                                RideEstimateError(
-                                    it.errorCode,
-                                    it.errorDescription
-                                )
-                            })
-                    }
-                    stopLoading()
-
-                    if (_state.value.isLoading == false && _state.value.error != null) {
+                viewModelScope.launch {
+                    if (e.code() == 400) {
+                        startLoading()
+                        val errorBody = e.response()?.errorBody()?.string()
                         _state.update { currentState ->
                             currentState.copy(
-                                hasFeedBack = true,
-                                feedBack = Pair(
-                                    FeedBackType.ERROR,
-                                    _state.value.error?.errorDescription.toString()
-                                )
+                                errorResponseBody = errorBody ?: ""
                             )
+                        }
+
+                        val json = Json { ignoreUnknownKeys = true }
+                        val apiRideEstimateError = json.decodeFromString<RideEstimateErrorResponse>(
+                            errorBody.toString()
+                        )
+
+                        _state.update { currentState ->
+                            currentState.copy(
+                                error = apiRideEstimateError.let {
+                                    RideEstimateError(
+                                        it.errorCode,
+                                        it.errorDescription
+                                    )
+                                })
+                        }
+                        stopLoading()
+
+                        if (_state.value.isLoading == false && _state.value.error != null) {
+                            _state.update { currentState ->
+                                currentState.copy(
+                                    hasFeedBack = true,
+                                    feedBack = Pair(
+                                        FeedBackType.ERROR,
+                                        _state.value.error?.errorDescription.toString()
+                                    )
+                                )
+                            }
                         }
                     }
                 }
