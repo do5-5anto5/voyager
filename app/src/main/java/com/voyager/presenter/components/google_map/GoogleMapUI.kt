@@ -2,9 +2,12 @@ package com.voyager.presenter.components.google_map
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -33,10 +36,11 @@ fun GoogleMapUI(
     }
     GoogleMap(
         modifier = modifier
-            .size(300.dp)
-            .padding(vertical = 30.dp)
+            .height(190.dp)
+            .width(350.dp)
+            .padding(30.dp)
             .clip(CircleShape)
-            .border(2.dp, Color.Blue, CircleShape),
+            .border(4.dp, Color.LightGray, RoundedCornerShape(30.dp)),
         cameraPositionState = cameraPositionState
     ) {
         Marker(
