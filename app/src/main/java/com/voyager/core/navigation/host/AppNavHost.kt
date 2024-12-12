@@ -9,10 +9,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.voyager.core.navigation.routes.AppRoutes
-import com.voyager.domain.model.ride.Option
-import com.voyager.presenter.screen.ride_confirm.screen.RideConfirmScreen
-import com.voyager.presenter.screen.ride_history.screen.RideHistoryScreen
-import com.voyager.presenter.screen.ride_request.screen.RideRequestScreen
+import com.voyager.domain.model.ride.estimate.Option
+import com.voyager.presenter.screen.ride.confirm.screen.RideConfirmScreen
+import com.voyager.presenter.screen.ride.history.screen.RideHistoryScreen
+import com.voyager.presenter.screen.ride.request.screen.RideRequestScreen
 
 @Composable
 fun AppNavHost(navHostController: NavHostController) {
@@ -31,9 +31,10 @@ fun AppNavHost(navHostController: NavHostController) {
                     transformOrigin = TransformOrigin(0.5f, 0.5f)
                 )
             }
-        ) {
+        ) { backStackEntry ->
             RideRequestScreen(
                 navigateToRideConfirm = { options ->
+                    backStackEntry.savedStateHandle.set("options", options)
                     navHostController.navigate(AppRoutes.RideConfirmRoute)
                 })
         }
@@ -49,9 +50,10 @@ fun AppNavHost(navHostController: NavHostController) {
                 )
             }
         ) { backStackEntry ->
-            val options = backStackEntry.savedStateHandle.get<List<Option>>("options")
+            val previousBackStackEntry = navHostController.previousBackStackEntry
+            val options = previousBackStackEntry?.savedStateHandle?.get<List<Option>>("options")
             RideConfirmScreen(
-                options = options
+                options = options ?: emptyList()
             )
         }
         composable<AppRoutes.RideHistoryRoute>(
