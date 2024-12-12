@@ -33,8 +33,8 @@ fun AppNavHost(navHostController: NavHostController) {
             }
         ) { backStackEntry ->
             RideRequestScreen(
-                navigateToRideConfirm = { options ->
-                    backStackEntry.savedStateHandle.set("options", options)
+                navigateToRideConfirm = { customerIdAndOptions ->
+                    backStackEntry.savedStateHandle.set("customerIdAndOptions", customerIdAndOptions)
                     navHostController.navigate(AppRoutes.RideConfirmRoute)
                 })
         }
@@ -51,10 +51,12 @@ fun AppNavHost(navHostController: NavHostController) {
             }
         ) { backStackEntry ->
             val previousBackStackEntry = navHostController.previousBackStackEntry
-            val options = previousBackStackEntry?.savedStateHandle?.get<List<Option>>("options")
-            RideConfirmScreen(
-                options = options ?: emptyList()
-            )
+            val customerIdAndOptions = previousBackStackEntry?.savedStateHandle?.get<Pair<String, List<Option>>>("customerIdAndOptions")
+            customerIdAndOptions?.let {
+                RideConfirmScreen(
+                    customerIdAndOptions = customerIdAndOptions
+                )
+            }
         }
         composable<AppRoutes.RideHistoryRoute>(
             enterTransition = {

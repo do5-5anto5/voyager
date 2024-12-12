@@ -14,7 +14,9 @@ val presenterModule = module {
     }
 
     viewModel {
-        RideConfirmViewModel()
+        RideConfirmViewModel(
+            useCase = get()
+        )
     }
 
     viewModel {
