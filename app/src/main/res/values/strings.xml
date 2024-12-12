@@ -2,6 +2,7 @@
     <string name="app_name">Voyager</string>
 
 <!--RideRequestScreen-->
+    <string name="button_title_request_ride">Solicitar Corrida</string>
     <!--AddressesDropDownMenu-->
     <string name="choose_origin_address">Escolha o endereço de origem</string>
     <string name="choose_destination_address">Escolha o endereço de destino</string>
@@ -15,6 +16,7 @@
 <!--RideConfirmScreen-->
     <string name="marker_description">Endereço de destino</string>
     <string name="title_choose_option">Clique na sua opção</string>
+    <string name="button_title_choose_driver">Escolher</string>
 
 <!--Errors-->
     <string name="generic_error">Erro desconhecido, tente mais tarde.</string>

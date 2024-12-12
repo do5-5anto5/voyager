@@ -12,7 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
@@ -43,9 +43,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.voyager.R
 import com.voyager.domain.model.ride.estimate.Option
+import com.voyager.presenter.components.feedback.FeedbackUI
 import com.voyager.presenter.components.formulary.DefaultButton
 import com.voyager.presenter.components.formulary.DefaultTextView
-import com.voyager.presenter.components.feedback.FeedbackUI
 import com.voyager.presenter.screen.ride.request.action.RideRequestAction
 import com.voyager.presenter.screen.ride.request.state.RideRequestState
 import com.voyager.presenter.screen.ride.request.viewModel.RideRequestViewModel
@@ -55,7 +55,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun RideRequestScreen(
-    navigateToRideConfirm: (List<Option>) -> Unit
+    navigateToRideConfirm: (Pair<String, List<Option>>) -> Unit
 ) {
 
     val viewModel = koinViewModel<RideRequestViewModel>()
@@ -83,7 +83,7 @@ private fun RideRequestScreenContent(
     context: Context,
     scope: CoroutineScope,
     snackbarHostState: SnackbarHostState,
-    navigateToRideConfirm: (List<Option>) -> Unit
+    navigateToRideConfirm: (Pair<String, List<Option>>) -> Unit
 ) {
 
     var originMenuExpanded = remember { mutableStateOf(false) }
@@ -133,7 +133,7 @@ private fun RideRequestScreenContent(
             && state.hasFeedBack == false
         ) {
             action(RideRequestAction.OnOptionsPopulate)
-            navigateToRideConfirm(state.rideEstimate.options)
+            navigateToRideConfirm(Pair(state.requestBody.customerId ?: "", state.rideEstimate.options))
         }
     }
 
@@ -155,7 +155,7 @@ private fun RideRequestScreenContent(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.Black)
+                .background(Color.Blue)
                 .padding(innerPadding),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -177,8 +177,8 @@ private fun RideRequestScreenContent(
                     .fillMaxWidth()
                     .padding(30.dp)
                     .height(58.dp)
-                    .clip(CircleShape)
-                    .background(Color.Gray)
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(Color.Green)
                     .clickable { originMenuExpanded.value = !originMenuExpanded.value },
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
@@ -230,8 +230,8 @@ private fun RideRequestScreenContent(
                     .fillMaxWidth()
                     .padding(30.dp)
                     .height(58.dp)
-                    .clip(CircleShape)
-                    .background(Color.Red)
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(Color.Green)
                     .clickable { destinationMenuExpanded.value = !destinationMenuExpanded.value },
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
@@ -286,7 +286,7 @@ private fun RideRequestScreenContent(
                     action(RideRequestAction.GetRideEstimate)
                     action(RideRequestAction.OnRequestRideButtonClick)
                 },
-                text = "Request Ride",
+                text = stringResource(R.string.button_title_request_ride),
                 isLoading = state.isLoading
             )
         }
@@ -303,6 +303,6 @@ private fun RideRequestScreenPreview() {
         context = LocalContext.current,
         scope = rememberCoroutineScope(),
         snackbarHostState = remember { SnackbarHostState() },
-        navigateToRideConfirm = {}
+        navigateToRideConfirm = {  },
     )
 }

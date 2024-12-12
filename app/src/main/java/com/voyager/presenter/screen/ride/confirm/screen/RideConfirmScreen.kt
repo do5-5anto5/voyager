@@ -18,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -25,6 +26,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.android.gms.maps.model.LatLng
+import com.voyager.R
 import com.voyager.domain.model.ride.estimate.Option
 import com.voyager.presenter.components.driver.DriverCard
 import com.voyager.presenter.components.google_map.GoogleMapUI
@@ -35,7 +37,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun RideConfirmScreen(
-    options: List<Option>
+    customerIdAndOptions: Pair<String, List<Option>>,
 ) {
     val viewModel = koinViewModel<RideConfirmViewModel>()
     val state by viewModel.state.collectAsState()
@@ -44,7 +46,7 @@ fun RideConfirmScreen(
     RideConfirmScreenContent(
         state = state,
         action = action,
-        options = options
+        options = customerIdAndOptions.second
     )
 
 }
@@ -54,7 +56,8 @@ fun RideConfirmScreen(
 private fun RideConfirmScreenContent(
     state: RideConfirmState,
     action: (RideConfirmAction) -> Unit,
-    options: List<Option>
+    options: List<Option>,
+
 ) {
 
     Scaffold { innerPadding ->
@@ -72,7 +75,7 @@ private fun RideConfirmScreenContent(
             )
 
             Text(
-                text = "",
+                text = stringResource(R.string.title_choose_option),
                 style = TextStyle(
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
@@ -90,9 +93,10 @@ private fun RideConfirmScreenContent(
                     .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
                     .border(2.dp, Color.Gray, RoundedCornerShape(16.dp)),
             ) {
-                items(options.size) { index ->
+                items(options.size) { driver ->
                     DriverCard(
-                        driver = options[index]
+                        driver = options[driver],
+                        onClick = { action(RideConfirmAction.OptionSelected(options[driver])) }
                     )
                 }
             }
