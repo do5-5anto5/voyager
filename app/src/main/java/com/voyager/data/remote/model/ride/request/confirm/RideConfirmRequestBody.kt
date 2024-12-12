@@ -7,17 +7,17 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class RideConfirmRequestBody(
     @SerialName("customer_id")
-    val customerId: String,
-    @SerialName("destination")
-    val destination: String,
-    @SerialName("distance")
-    val distance: String,
-    @SerialName("driver")
-    val driver: DriverRequestBody,
-    @SerialName("duration")
-    val duration: String,
+    val customerId: String? = null,
     @SerialName("origin")
-    val origin: String,
+    val origin: String? = null,
+    @SerialName("destination")
+    val destination: String? = null,
+    @SerialName("distance")
+    val distance: String? = null,
+    @SerialName("duration")
+    val duration: String? = null,
+    @SerialName("driver")
+    val driver: DriverRequestBody? = null,
     @SerialName("value")
-    val value: String
+    val value: String? = null
 )

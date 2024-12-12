@@ -8,5 +8,5 @@ data class DriverRequestBody(
     @SerialName("id")
     val id: Int? = null,
     @SerialName("name")
-    val name: String? = ""
+    val name: String? = null
 )
