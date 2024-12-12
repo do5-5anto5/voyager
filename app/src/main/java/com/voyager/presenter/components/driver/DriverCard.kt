@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -28,11 +29,14 @@ import androidx.compose.ui.unit.sp
 import com.voyager.R
 import com.voyager.domain.model.ride.estimate.Option
 import com.voyager.domain.model.ride.estimate.Review
+import com.voyager.presenter.components.formulary.DefaultButton
 
 @Composable
 fun DriverCard(
     modifier: Modifier = Modifier,
-    driver: Option
+    driver: Option,
+    isLoading: Boolean = false,
+    onClick: () -> Unit
 ) {
 
     Card(
@@ -160,6 +164,14 @@ fun DriverCard(
                         )
                     }
                 )
+
+                Spacer(modifier = Modifier.width(6.dp))
+
+                DefaultButton(
+                    text = stringResource(R.string.button_title_choose_driver),
+                    isLoading = isLoading,
+                    onClick = onClick
+                )
             }
         }
     )
@@ -178,6 +190,7 @@ fun DriverPreview(modifier: Modifier = Modifier) {
                 comment = "comment"
             ),
             value = 0.00
-        )
+        ),
+        onClick = {}
     )
 }
