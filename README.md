@@ -127,31 +127,31 @@ MVVM (Model-View-ViewModel) is an architectural pattern that separates the user 
 ## Added dependencies:
 
 - Google Secrets Gradle plugin:
-- Allows the use of project secrets in build.gradle.kts. Plugins:
+  - Allows the use of project secrets in build.gradle.kts. Plugins:
 - Kotlin serialization plugin:
-- Added support for Kotlin serialization for data encoding and decoding.
+  - Added support for Kotlin serialization for data encoding and decoding.
 - Google Maps Platform Secrets Gradle plugin:
-- Allows secure management of Google Maps Platform secrets. Implementation:
+  - Allows secure management of Google Maps Platform secrets. Implementation:
 - Lottie Compose:
-- Integrates the Lottie library for animations into Compose.
+  - Integrates the Lottie library for animations into Compose.
 - Coin Android:
-- Provides dependency injection using Koin.
+  - Provides dependency injection using Koin.
 - Retrofit:
-- Allows for making HTTP requests using Retrofit.
+  - Allows for making HTTP requests using Retrofit.
 - OkHttp BOM:
-- Defines a base platform for OkHttp dependencies.
+  - Defines a base platform for OkHttp dependencies.
 - OkHttp:
-- Provides an HTTP client to make network requests.
+  - Provides an HTTP client to make network requests.
 - Logging Interceptor:
-- Enables logging of HTTP requests and responses.
+  - Enables logging of HTTP requests and responses.
 - Kotlin Serialization Converter:
-- Added a converter to use Kotlin serialization with Retrofit.
+  - Added a converter to use Kotlin serialization with Retrofit.
 - Kotlin Serialization JSON:
-- Added support for JSON serialization using Kotlin serialization.
+  - Added support for JSON serialization using Kotlin serialization.
 - Jetpack Compose Navigation:
-- Allows for navigation between screens using Jetpack Compose Navigation.
+  - Allows for navigation between screens using Jetpack Compose Navigation.
 - Google Maps Composition:
-- Integrates Google Maps into Compose to visualize maps.
+  - Integrates Google Maps into Compose to visualize maps.
 
 ______
 
